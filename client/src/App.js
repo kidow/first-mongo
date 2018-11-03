@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
-import { Button } from 'antd'
+import { AddUser, UserList, AddComment, CommentList } from './components';
 class App extends Component {
   render() {
     return (
-      <div>
-        <Button>as</Button>
-      </div>
+      <>
+        <AddUser />
+        <UserList />
+        <AddComment />
+        <CommentList />
+      </>
     );
   }
 }
