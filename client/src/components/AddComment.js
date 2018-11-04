@@ -1,14 +1,14 @@
 import React from 'react';
 import { Form, Input, Button } from 'antd'
 
-const AddComment = () => {
+const AddComment = ({onChange, commenter, comment}) => {
   return (
     <div>
       <h2>댓글 등록</h2>
       <Form layout='inline'>
         <Form.Item>
-          <Input placeholder='사용자 아이디' />
-          <Input placeholder='댓글' />
+          <Input placeholder='사용자 아이디' onChange={onChange} value={commenter} name='commenter'/>
+          <Input placeholder='댓글' onChange={onChange} value={comment} name='comment'/>
           <Button>등록</Button>
         </Form.Item>
       </Form>

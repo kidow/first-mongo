@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
-import { AddUser, UserList, AddComment, CommentList } from './components';
+import { AddUserContainer, UserListContainer, AddCommentContainer, CommentListContainer } from './containers';
 import { Divider } from 'antd';
 class App extends Component {
   render() {
     return (
       <>
-        <AddUser />
+        <AddUserContainer />
         <Divider style={{ width: '700px'}}/>
-        <UserList />
+        <UserListContainer />
         <Divider style={{ width: '700px' }}/>
-        <AddComment />
+        <AddCommentContainer />
         <Divider style={{ width: '700px' }}/>
-        <CommentList />
+        <CommentListContainer />
       </>
     );
   }
