@@ -13,6 +13,7 @@ const columns = [{
   title: '댓글',
   dataIndex: 'comment',
   key: 'comment',
+  editable: true
 }, {
   title: '수정',
   key: 'update',
@@ -24,14 +25,16 @@ const columns = [{
 }];
 
 const CommentList = ({onModify, onRemove, comments}) => {
-  // const commentList = comments.map(item => {
-  //   return Object.assign({}, {
-  //     id: item._id,
-  //     comment: item.comment,
-  //     name: item.name,
-  //     update: <Button onClick={onModify}>수정</Button>,
-  //     delete: <Button onClick={onRemove}>삭제</Button>
-  //   })
+  // const commentList = comments.map((item, index) => {
+  //   const { _id, comment, commenter } = item
+  //   return { 
+  //     key: String(index + 1), 
+  //     id: _id, 
+  //     name: commenter, 
+  //     comment,
+  //     update: <Button>수정</Button>,
+  //     deleter: <Button>삭제</Button>
+  //   }
   // })
 
   const data = [{

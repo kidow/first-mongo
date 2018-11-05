@@ -22,7 +22,8 @@ class AddUserContainer extends Component {
       UserActions.postUser({name, age, married})
       UserActions.initialize()
     } else {
-      alert('bad')
+      alert('올바른 값을 입력하세요')
+      UserActions.initialize()
     }
   }
   render() {

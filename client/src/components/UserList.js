@@ -19,15 +19,22 @@ const columns = [{
   dataIndex: 'married',
 }];
 
-const UserList = ({users}) => {
+const UserList = ({users, comments}) => {
   const userList = users.map((user, index) => {
     const { _id, name, age, married } = user
-    return { key: String(index + 1), id: _id, name, age, married: married ? '기혼' : '미혼' }
+    return { 
+      key: String(index + 1), 
+      id: _id,
+      name, 
+      age, 
+      married: married ? '기혼' : '미혼' 
+    }
   })
   return (
     <Table 
       columns={columns}
       dataSource={userList}
+      onRowClick={() => alert('good')}
       style={{ width: '700px'}}
     />
   );

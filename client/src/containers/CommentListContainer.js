@@ -5,6 +5,11 @@ import { bindActionCreators } from 'redux'
 import * as commentActions from '../store/comment'
 
 class CommentListContainer extends Component {
+  getCommentsList = () => {
+    const { CommentActions } = this.props
+    CommentActions.getComment()
+  }
+
   handleModify = () => {
     const { CommentActions, match } = this.props
     const { id } = match.params
@@ -16,12 +21,18 @@ class CommentListContainer extends Component {
     const { id } = match.params
     CommentActions.remove(id)
   }
+
+  componentDidMount() {
+    this.getCommentsList()
+  }
+
   render() {
-    const { handleModify, handleRemove } = this
+    const { handleModify, handleRemove, comments } = this
     return (
       <CommentList 
         onModify={handleModify}
         onRemove={handleRemove}
+        comments={comments}
       />
     );
   }
@@ -29,7 +40,7 @@ class CommentListContainer extends Component {
 
 export default connect(
   state => ({
-    
+    comments: state.comment.get('comments')
   }),
   dispacth => ({
     CommentActions: bindActionCreators(commentActions, dispacth)

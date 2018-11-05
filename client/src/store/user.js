@@ -19,7 +19,8 @@ const initialState = Map({
   name: '',
   age: '',
   married: false,
-  users: List()
+  users: List(),
+  userId: null
 })
 
 export default handleActions({

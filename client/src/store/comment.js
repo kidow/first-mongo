@@ -1,4 +1,4 @@
-import { Map, List, fromJS } from 'immutable'
+import { Map, List } from 'immutable'
 import { createAction, handleActions } from 'redux-actions'
 import { pender } from 'redux-pender'
 import * as api from '../lib/api'
@@ -36,7 +36,7 @@ export default handleActions({
     type: GET_COMMENT,
     onSuccess: (state, action) => {
       const { data: comments } = action.payload
-      return state.set('commenter', fromJS(comments))
+      return state.set('comments', comments)
     }
   }),
   ...pender({
