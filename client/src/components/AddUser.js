@@ -1,7 +1,7 @@
 import React from 'react';
-import { Form, Input, Checkbox, Button } from 'antd'
+import { Form, Input, Button } from 'antd'
 
-const AddUser = ({name, age, onChange}) => {
+const AddUser = ({name, age, married, onChange, onToggle, onSubmit}) => {
   return (
     <div>
       <h2>사용자 등록</h2>
@@ -9,8 +9,10 @@ const AddUser = ({name, age, onChange}) => {
         <Form.Item>
           <Input placeholder='이름' value={name} name='name' onChange={onChange}/>
           <Input placeholder='나이' value={age} name='age' onChange={onChange}/>
-          <Checkbox>결혼 여부</Checkbox><br />
-          <Button>등록</Button>
+          <div onClick={onToggle}>
+            <input type='checkbox' value='결혼 여부' checked={married} readOnly/> 결혼 여부
+          </div>
+          <Button onClick={onSubmit}>등록</Button>
         </Form.Item>
       </Form>
     </div>

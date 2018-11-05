@@ -5,10 +5,14 @@ import { pender } from 'redux-pender'
 const CHANGE_INPUT = 'comment/CHANGE_INPUT'
 const GET_COMMENT = 'comment/GET_COMMENT'
 const POST_COMMENT = 'comment/POST_COMMENT'
+const MODIFY_COMMENT = 'comment/MODIFY_COMMENT'
+const REMOVE_COMMENT = 'comment/REMOVE_COMMENT'
 
 export const changeInput = createAction(CHANGE_INPUT)
 export const getComment = createAction(GET_COMMENT)
 export const postComment = createAction(POST_COMMENT)
+export const modifyComment = createAction(MODIFY_COMMENT)
+export const removeComment = createAction(REMOVE_COMMENT)
 
 const initialState = Map({
   commenter: '',
@@ -33,6 +37,18 @@ export default handleActions({
     onSuccess: (state, action) => {
       const { _id } = action.payload.data
       return state.set('commentId', _id)
+    }
+  }),
+  ...pender({
+    type: MODIFY_COMMENT,
+    onSuccess: (state, action) => {
+
+    }
+  }),
+  ...pender({
+    type: REMOVE_COMMENT,
+    onSuccess: (state, action) => {
+      
     }
   })
 }, initialState)

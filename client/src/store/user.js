@@ -3,24 +3,29 @@ import { createAction, handleActions } from 'redux-actions'
 import { pender } from 'redux-pender'
 
 const CHANGE_INPUT = 'user/CHANGE_INPUT'
+const TOGGLE = 'user/TOGGLE'
 const GET_USER = 'user/GET_USER'
 const POST_USER = 'user/POST_USER'
 
 export const changeInput = createAction(CHANGE_INPUT)
+export const toggle = createAction(TOGGLE)
 export const getUser = createAction(GET_USER)
 export const postUser = createAction(POST_USER)
 
 const initialState = Map({
   name: '',
   age: '',
-  error: '',
-  married: ''
+  married: false,
+  error: ''
 })
 
 export default handleActions({
   [CHANGE_INPUT]: (state, action) => {
     const { name, value } = action.payload
     return state.set(name, value) 
+  },
+  [TOGGLE]: (state, action) => {
+    return state.update('married', married => !married)
   },
   ...pender({
     type: GET_USER,

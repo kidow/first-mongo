@@ -10,14 +10,31 @@ class AddUserContainer extends Component {
     const { name, value } = e.target
     UserActions.changeInput({name, value})
   }
+
+  handleToggle = (married) => {
+    const { UserActions } = this.props
+    UserActions.toggle(married)
+  }
+
+  handleSubmit = () => {
+    const { name, age, married } = this.props 
+    if (name && age.match(/^[0-9]*$/g) && married) {
+      alert('good')
+    } else {
+      alert('bad')
+    }
+  }
   render() {
-    const { handleChange } = this
-    const { name, age } = this.props
+    const { handleChange, handleSubmit, handleToggle } = this
+    const { name, age, married } = this.props
     return (
       <AddUser 
         onChange={handleChange}
+        onToggle={handleToggle}
+        onSubmit={handleSubmit}
         name={name}
         age={age}
+        married={married}
       />
     );
   }
@@ -26,7 +43,8 @@ class AddUserContainer extends Component {
 export default connect(
   state => ({
     name: state.user.get('name'),
-    age: state.user.get('age')
+    age: state.user.get('age'),
+    married: state.user.get('married')
   }),
   dispatch => ({
     UserActions: bindActionCreators(userActions, dispatch)

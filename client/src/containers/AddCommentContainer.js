@@ -10,13 +10,33 @@ class AddCommentContainer extends Component {
     const { name, value } = e.target
     CommentActions.changeInput({name, value})
   }
+
+  handleSubmit = () => {
+    const { comment, commenter } = this.props
+    if (comment && commenter) {
+      alert('good')
+    } else {
+      alert('bad')
+    }
+  }
+
+  handleModify = () => {
+    alert('modify')
+  }
+
+  handleRemove = () => {
+    alert('remove')
+  }
   
   render() {
-    const { handleChange } = this
+    const { handleChange, handleSubmit, handleModify, handleRemove } = this
     const { comment, commenter } = this.props
     return (
       <AddComment 
-        onChange={handleChange} 
+        onChange={handleChange}
+        onSubmit={handleSubmit}
+        onModify={handleModify}
+        onRemove={handleRemove}
         comment={comment} 
         commenter={commenter}
       />
