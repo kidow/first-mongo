@@ -5,12 +5,13 @@ import './index.css'
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-import { createStore } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import reducers from './store'
 import { composeWithDevTools } from 'redux-devtools-extension'
+import penderMiddleware from 'redux-pender'
 
-const store = createStore(reducers, composeWithDevTools())
+const store = createStore(reducers, composeWithDevTools(applyMiddleware(penderMiddleware())))
 
 ReactDOM.render(
   <Provider store={store}>

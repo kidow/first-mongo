@@ -17,9 +17,10 @@ class AddUserContainer extends Component {
   }
 
   handleSubmit = () => {
-    const { name, age, married } = this.props 
-    if (name && age.match(/^[0-9]*$/g) && married) {
-      alert('good')
+    const { name, age, married, UserActions } = this.props 
+    if (name && age.match(/^[0-9]*$/g)) {
+      UserActions.postUser({name, age, married})
+      UserActions.initialize()
     } else {
       alert('bad')
     }

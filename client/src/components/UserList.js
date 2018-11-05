@@ -19,31 +19,15 @@ const columns = [{
   dataIndex: 'married',
 }];
 
-const data = [{
-  key: '1',
-  id: 1,
-  name: 'John Brown',
-  age: 32,
-  married: '기혼',
-}, {
-  key: '2',
-  id: 2,
-  name: 'Jim Green',
-  age: 42,
-  married: '미혼'
-}, {
-  key: '3',
-  id: 3,
-  name: 'Joe Black',
-  age: 32,
-  married: '기혼'
-}];
-
-const UserList = () => {
+const UserList = ({users}) => {
+  const userList = users.map((user, index) => {
+    const { _id, name, age, married } = user
+    return { key: String(index + 1), id: _id, name, age, married: married ? '기혼' : '미혼' }
+  })
   return (
     <Table 
-      columns={columns} 
-      dataSource={data} 
+      columns={columns}
+      dataSource={userList}
       style={{ width: '700px'}}
     />
   );

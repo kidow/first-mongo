@@ -12,9 +12,9 @@ class AddCommentContainer extends Component {
   }
 
   handleSubmit = () => {
-    const { comment, commenter } = this.props
+    const { comment, commenter, CommentActions } = this.props
     if (comment && commenter) {
-      alert('good')
+      CommentActions.initialize()
     } else {
       alert('bad')
     }
